@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="output.css">
+</head>
+
+<body>
+
+  <div class="select-none min-h-screen w-full absolute bg-gradient-to-br from-slate-950 via-slate-900 to-gray-950 p-6">
+
+    <h1 class="text-4xl font-bold text-white text-center mb-10">
+      Productivity Dashboard
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 justify-items-center">
+
+      <!-- Card -->
+      <div id="0"
+        class=" elem group relative h-64 w-full max-w-60 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="https://images.unsplash.com/photo-1718202248232-0cdbc15d29b2?q=80&w=764&auto=format&fit=crop" alt="">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div
+          class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+          📝
+        </div>
+
+        <h2 class="font-regular absolute bottom-5 left-5 text-2xl font-bold text-white">
+          TODO
+        </h2>
+
+      </div>
+
+      <!-- Card -->
+      <div id="1"
+        class=" elem group relative h-64 w-full max-w-60 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="https://images.unsplash.com/photo-1708777219974-1ef890047764?q=80&w=732&auto=format&fit=crop" alt="">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div
+          class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+          📅
+        </div>
+
+        <h2 class=" font-regular absolute bottom-5 left-5 text-2xl font-bold text-white">
+          Daily Planner
+        </h2>
+
+      </div>
+
+      <!-- Card -->
+      <div id="2"
+        class=" elem group relative h-64 w-full max-w-60 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="https://images.unsplash.com/photo-1677249490921-3246e81f19e3?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div
+          class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+          💡
+        </div>
+
+        <h2 class=" font-regular absolute bottom-5 left-5 text-2xl font-bold text-white">
+          Motivation
+        </h2>
+
+      </div>
+
+      <!-- Card -->
+      <div id="3"
+        class=" elem group relative h-64 w-full max-w-60 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="https://images.unsplash.com/photo-1653549892896-dde02867edee?q=80&w=627&auto=format&fit=crop" alt="">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div
+          class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+          ⏳
+        </div>
+
+        <h2 class=" font-regular absolute bottom-5 left-5 text-2xl font-bold text-white">
+          Pomodoro
+        </h2>
+
+      </div>
+
+      <!-- Card -->
+      <div id="4"
+        class=" elem group relative h-64 w-full max-w-60 rounded-2xl overflow-hidden shadow-xl cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+
+        <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          src="https://images.unsplash.com/photo-1697498435309-2c7864cfd607?q=80&w=687&auto=format&fit=crop" alt="">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+
+        <div
+          class="absolute top-3 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+          🎯
+        </div>
+
+        <h2 class="font-regular absolute bottom-5 left-5 text-2xl font-bold text-white">
+          Plans
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
+      <h2 class="font-regular text-4xl text-white font-semibold ">List Your Tasks</h2>
+      <button id="0" class=" font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
+      <h2 class="font-regular text-4xl text-white font-semibold ">Plan Your Day </h2>
+      <button id="1" class=" font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
+      <h2 class="font-regular text-4xl text-white font-semibold ">Quotes</h2>
+      <button id="2" class="font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
+      <h2 class="font-regular text-4xl text-white font-semibold ">Pomodoro Timer</h2>
+      <button id="3" class="font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
+    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
+      <h2 class="font-regular text-4xl text-white font-semibold ">List your Daily Plans</h2>
+      <button id="4" class="font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+        Back
+      </button>
+    </div>
+  </div>
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
