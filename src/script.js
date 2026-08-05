@@ -15,29 +15,37 @@ function openFeatures() {
 }
 openFeatures();
 
-let tasks = [];
+function todo() {
+  let frm = document.querySelector(".todo-frm");
+  let input = document.querySelector(".inp");
+  let alltsks = document.querySelector(".all-tasks");
+  // let tasks = [];
 
-let frm = document.querySelector(".todo-frm");
-let input = document.querySelector(".inp");
-let alltsks = document.querySelector(".all-tasks");
-frm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  if (input.value == "") {
-    return;
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
-  tasks.push({ task: input.value });
-  renderTask();
-  frm.reset();
-});
-function renderTask() {
-  let task = "";
-  tasks.forEach(function (e) {
-    task += `<div class="bg-slate-800 rounded-xl p-4 flex justify-between items-center">
+
+  frm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (input.value == "") {
+      return;
+    }
+    tasks.push({ task: input.value });
+    saveTasks();
+    renderTask();
+
+    frm.reset();
+  });
+  function renderTask() {
+    let task = "";
+    tasks.forEach(function (e) {
+      task += `<div class="bg-slate-800 rounded-xl p-4 flex justify-between items-center">
 
                 <div class="flex items-center gap-4">
 
-                    <input type="checkbox" class="check w-5 h-5 accent-cyan-500">
+                  
 
                     <p class="text-white">
                         ${e.task}
@@ -49,13 +57,24 @@ function renderTask() {
 
                     
 
-                    <button class="mark text-red-500 hover:scale-110 duration-300">
+                    <button  class="delete mark text-red-500 hover:scale-110 duration-300 cursor-pointer text-xl  ">
                         🗑️
                     </button>
 
                 </div>
 
             </div>`;
-  });
-  alltsks.innerHTML = task;
+    });
+    alltsks.innerHTML = task;
+    let deletBtn = document.querySelectorAll(".delete");
+    deletBtn.forEach(function (e, idx) {
+      e.addEventListener("click", function () {
+        tasks.splice(idx, 1);
+        saveTasks();
+        renderTask();
+        
+      });
+    });
+  }
 }
+todo();
