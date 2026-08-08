@@ -91,3 +91,19 @@ function todo() {
 }
 
 todo();
+
+
+let quote = document.querySelector(".quote")
+
+async function getdata() {
+
+    let response = await fetch("https://type.fit/api/quotes");
+
+    let data = await response.json();
+
+    console.log(data[0].text);
+    console.log(data[0].author);
+
+}
+
+getdata();
