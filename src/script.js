@@ -92,18 +92,19 @@ function todo() {
 
 todo();
 
+function motivationalQuotes() {
+  let quote = document.querySelector(".quote");
+  let author = document.querySelector(".author");
 
-let quote = document.querySelector(".quote")
-
-async function getdata() {
-
-    let response = await fetch("https://type.fit/api/quotes");
-
-    let data = await response.json();
-
-    console.log(data[0].text);
-    console.log(data[0].author);
-
+  async function data() {
+    let responce = await fetch(
+      "https://motivational-spark-api.vercel.app/api/quotes/random",
+    );
+    let data = await responce.json();
+    // console.log(data.author);
+    quote.innerHTML = `${data.quote}`;
+    author.innerHTML = `- ${data.author}`;
+  }
+  data();
 }
-
-getdata();
+motivationalQuotes()
