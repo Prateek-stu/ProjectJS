@@ -161,20 +161,195 @@
 
     </div>
   </div>
-  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
-    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
-      <h2 class="font-regular text-5xl text-white font-semibold ">Plan Your Day </h2>
-      <button id="1"
-        class=" font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
-        Back
-      </button>
+  <div class="fullElem min-h-screen w-full bg-slate-950 p-3 sm:p-5 absolute block">
+
+  <!-- Header -->
+  <div
+    class="flex flex-col gap-4 items-center p-3 sm:flex-row sm:justify-between sm:gap-0 sm:p-4 mb-2"
+  >
+    <div>
+      <h2
+        class="text-4xl sm:text-5xl text-white font-semibold tracking-tight text-center sm:text-left"
+      >
+        Plan Your Day
+      </h2>
+
+      <p class="text-slate-400 text-sm sm:text-base mt-1 text-center sm:text-left">
+        Organize your day, one hour at a time.
+      </p>
     </div>
-    <div class="min-h-full max-w-full ">
-      <div class="day-planner-time bg-red-600">
-        <!-- <p>6:00</p> -->
-      </div>
-    </div>
+
+    <button
+      id="1"
+      class="backBtn px-6 py-2.5 text-white bg-red-500/90 hover:bg-red-500 rounded-xl
+      shadow-lg shadow-red-500/10 border border-red-400/20
+      active:scale-[.95] duration-300 cursor-pointer transition-all"
+    >
+      Back
+    </button>
   </div>
+
+
+  <!-- Day Planner -->
+  <div
+    class="day-planner overflow-auto flex flex-col sm:flex-row sm:flex-wrap
+    justify-between items-start
+    bg-slate-800/70 backdrop-blur-sm
+    min-h-[70vh] max-h-[80vh]
+    p-3 sm:p-4 mt-2 rounded-2xl w-full gap-3
+    border border-white/10
+    shadow-2xl shadow-black/30"
+  >
+
+    <!-- 6:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        6:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 7:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        7:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 8:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        8:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 9:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        9:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 10:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        10:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 11:00 AM -->
+    <div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+        11:00 AM
+      </p>
+
+      <input
+        type="text"
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>
+
+
+    <!-- 12:00 PM -->
+    
+
+  </div>
+</div>
   <div class="fullElem min-h-screen w-full bg-slate-700 absolute hidden">
     <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
       <h2 class="font-regular text-4xl text-white font-semibold ">Quotes</h2>
@@ -229,7 +404,7 @@
 
     </div>
   </div>
-  <div class="fullElem min-h-screen w-full bg-slate-900 absolute block">
+  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
     <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
       <h2 class="font-regular text-4xl text-white font-semibold ">Pomodoro Timer</h2>
       <button id="3"

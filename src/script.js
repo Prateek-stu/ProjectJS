@@ -92,6 +92,55 @@ function todo() {
 
 todo();
 
+var hours = Array.from({length:18},function(elem,idx){
+  return `${6+idx}:00 - ${7+idx}:00`
+  
+})
+let wholeDaySum="";
+hours.forEach(function(elem,idx){
+  wholeDaySum+=`<div
+      class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
+    >
+      <p
+        class="absolute top-2 left-3 text-xs sm:text-sm  font-semibold  text-white z-10"
+      >
+       ${elem}
+      </p>
+
+      <input
+        type="text" id=${idx}
+        class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
+        bg-slate-700/80 border border-white/5
+        hover:border-white/10 focus:border-blue-400/50
+        outline-0 text-lg sm:text-xl text-white
+        placeholder:text-slate-500
+        w-full transition-all duration-300
+        focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
+        placeholder="What are you planning?"
+      />
+    </div>`
+  
+})
+let dayPlansdata=JSON.parse(localStorage.getItem('dayPlansData'))||{}
+console.log(dayPlansdata);
+
+let dayPlan= document.querySelector(".day-planner");
+dayPlan.innerHTML=wholeDaySum;
+
+let plans= document.querySelectorAll(".day-planner input");
+plans.forEach(function(e){
+  e.addEventListener("input",function(){
+    
+    dayPlansdata[e.id]=e.value;
+    
+    localStorage.setItem('dayPlansData',JSON.stringify(dayPlansdata));
+    
+    
+  })
+})
+
+
+
 function motivationalQuotes() {
   let quote = document.querySelector(".quote");
   let author = document.querySelector(".author");
