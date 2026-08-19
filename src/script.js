@@ -69,11 +69,10 @@ function todo() {
       });
     });
     let clearAll = document.querySelector(".clearAll");
-    console.log(clearAll);
-    
     clearAll.addEventListener("click",function(){
-      console.log("hello");
       
+      localStorage.removeItem("dayPlanData")
+        
     })
   }
 
