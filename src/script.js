@@ -68,6 +68,13 @@ function todo() {
         renderTask();
       });
     });
+    let clearAll = document.querySelector(".clearAll");
+    console.log(clearAll);
+    
+    clearAll.addEventListener("click",function(){
+      console.log("hello");
+      
+    })
   }
 
   // Show saved tasks on page load
@@ -92,13 +99,18 @@ function todo() {
 
 todo();
 
-var hours = Array.from({length:18},function(elem,idx){
-  return `${6+idx}:00 - ${7+idx}:00`
-  
-})
-let wholeDaySum="";
-hours.forEach(function(elem,idx){
-  wholeDaySum+=`<div
+function dailyPlanner() {
+  let dayPlansdata = JSON.parse(localStorage.getItem("dayPlansData")) || {};
+  let dayPlan = document.querySelector(".day-planner");
+
+  var hours = Array.from({ length: 18 }, function (elem, idx) {
+    return `${6 + idx}:00 - ${7 + idx}:00`;
+  });
+  let wholeDaySum = "";
+  hours.forEach(function (elem, idx) {
+    let savedData = dayPlansdata[idx] || " ";
+
+    wholeDaySum += `<div
       class="day-planner-time w-full sm:w-[49%] relative flex items-center gap-3 group"
     >
       <p
@@ -108,7 +120,7 @@ hours.forEach(function(elem,idx){
       </p>
 
       <input
-        type="text" id=${idx}
+        type="text" id="${idx}" value="${savedData}"
         class="px-4 sm:px-5 pt-8 pb-4 sm:py-6 rounded-xl
         bg-slate-700/80 border border-white/5
         hover:border-white/10 focus:border-blue-400/50
@@ -118,28 +130,23 @@ hours.forEach(function(elem,idx){
         focus:bg-slate-700 focus:ring-2 focus:ring-blue-400/10"
         placeholder="What are you planning?"
       />
-    </div>`
-  
-})
-let dayPlansdata=JSON.parse(localStorage.getItem('dayPlansData'))||{}
-console.log(dayPlansdata);
+    </div>`;
+  });
 
-let dayPlan= document.querySelector(".day-planner");
-dayPlan.innerHTML=wholeDaySum;
+  dayPlan.innerHTML = wholeDaySum;
+  let plans = document.querySelectorAll(".day-planner input");
 
-let plans= document.querySelectorAll(".day-planner input");
-plans.forEach(function(e){
-  e.addEventListener("input",function(){
-    
-    dayPlansdata[e.id]=e.value;
-    
-    localStorage.setItem('dayPlansData',JSON.stringify(dayPlansdata));
-    
-    
-  })
-})
+  plans.forEach(function (e) {
+    e.addEventListener("input", function () {
+      console.log("hello");
 
+      dayPlansdata[e.id] = e.value;
 
+      localStorage.setItem("dayPlansData", JSON.stringify(dayPlansdata));
+    });
+  });
+}
+dailyPlanner();
 
 function motivationalQuotes() {
   let quote = document.querySelector(".quote");
@@ -156,6 +163,4 @@ function motivationalQuotes() {
   }
   data();
 }
-motivationalQuotes()
-
-
+motivationalQuotes();
