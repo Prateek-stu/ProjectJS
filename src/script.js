@@ -23,28 +23,31 @@ function todo() {
   let frm = document.querySelector(".todo-frm");
   let input = document.querySelector(".inp");
   let alltsks = document.querySelector(".all-tasks");
+  let clearAll = document.querySelector(".clearAll");
 
-  // Load tasks from Local Storage
-  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  let dailyTask = JSON.parse(localStorage.getItem("tasks")) || [];
 
-  // Save tasks
+if (!Array.isArray(dailyTask)) {
+  dailyTask = [];
+}
+
   function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem("tasks", JSON.stringify(dailyTask));
   }
 
-  // Render tasks
   function renderTask() {
     let taskHTML = "";
 
-    tasks.forEach(function (task, idx) {
+    dailyTask.forEach(function (e, idx) {
       taskHTML += `
         <div class="flex justify-between items-center bg-zinc-800 p-3 rounded-lg mb-2">
           
           <div class="flex items-center gap-3">
-            <p class="text-white">${task.task}</p>
+            <p class="text-white">${e.task}</p>
           </div>
 
-          <button data-index="${idx}"
+          <button 
+            data-index="${idx}"
             class="delete text-red-500 hover:scale-110 duration-300 cursor-pointer text-xl">
             🗑️
           </button>
@@ -55,35 +58,30 @@ function todo() {
 
     alltsks.innerHTML = taskHTML;
 
-    // Delete Event
     let deleteBtns = document.querySelectorAll(".delete");
 
     deleteBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
         let index = this.dataset.index;
 
-        tasks.splice(index, 1);
+        dailyTask.splice(index, 1);
 
         saveTasks();
         renderTask();
       });
     });
-    let clearAll = document.querySelector(".clearAll");
-    clearAll.addEventListener("click", function () {
-      localStorage.removeItem("dayPlanData");
-    });
   }
 
-  // Show saved tasks on page load
+  // Show saved tasks
   renderTask();
 
-  // Add Task
+  // Add task
   frm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (input.value.trim() === "") return;
 
-    tasks.push({
+    dailyTask.push({
       task: input.value.trim(),
     });
 
@@ -91,6 +89,14 @@ function todo() {
     renderTask();
 
     frm.reset();
+  });
+
+  // Clear all tasks
+  clearAll.addEventListener("click", function () {
+    dailyTask = [];
+
+    saveTasks();
+    renderTask();
   });
 }
 
@@ -161,39 +167,56 @@ function motivationalQuotes() {
   data();
 }
 motivationalQuotes();
-let timerInterval = null;
-let totalSeconds = 25 * 60;
-let timer = document.querySelector(".timer");
-let startTimer = document.querySelector(".start");
-let pauseTimer = document.querySelector(".stop");
-let resetTimer = document.querySelector(".reset");
+function pomodoroTimer() {
+  let timerInterval = null;
+  let totalSeconds = 25 * 60;
 
-function updateTime() {
-  let minutes = Math.floor(totalSeconds / 60);
-  let seconds = totalSeconds % 60;
-  timer.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-}
-function start() {
-  timerInterval = setInterval(() => {
-    totalSeconds--;
+  let timer = document.querySelector(".timer");
+  let startTimer = document.querySelector(".start");
+  let pauseTimer = document.querySelector(".stop");
+  let resetTimer = document.querySelector(".reset");
+
+  function updateTime() {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+
+    timer.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  function start() {
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+
+      if (totalSeconds <= 0) {
+        clearInterval(timerInterval);
+        return;
+      }
+
+      totalSeconds--;
+      updateTime();
+
+    }, 1000);
+  }
+
+  function stop() {
+    clearInterval(timerInterval);
+  }
+
+  function reset() {
+    clearInterval(timerInterval);
+
+    totalSeconds = 25 * 60;
+
     updateTime();
-  }, 10);
-}
-startTimer.addEventListener("click", () => {
-  clearInterval(timerInterval);
-  start();
-});
-function stop() {
-  clearInterval(timerInterval);
-}
-pauseTimer.addEventListener("click", () => {
-  stop();
-});
-function reset() {
-  clearInterval(timerInterval);
-  totalSeconds = 25 * 60;
+  }
+
+  startTimer.addEventListener("click", start);
+
+  pauseTimer.addEventListener("click", stop);
+
+  resetTimer.addEventListener("click", reset);
+
   updateTime();
 }
-resetTimer.addEventListener("click", function () {
-  reset();
-});
+pomodoroTimer()
