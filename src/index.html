@@ -351,15 +351,115 @@
 
     </div>
   </div>
-  <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
-    <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
-      <h2 class="font-regular text-4xl text-white font-semibold ">Pomodoro Timer</h2>
-      <button id="3"
-        class="font-light backBtn px-5 py-2 text-white bg-red-500 m-4 rounded active:scale-[.95] duration-300 cursor-pointer">
+
+  <div class="fullElem min-h-screen w-full absolute block overflow-hidden bg-slate-950">
+
+    <!-- Background decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-32 -left-32 h-72 w-72 rounded-full bg-amber-500/10 blur-3xl"></div>
+      <div class="absolute -bottom-32 -right-32 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="relative z-10 flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+
+      <div>
+        <p class="mb-1 text-xs font-medium uppercase tracking-[0.3em] text-amber-400">
+          Focus Session
+        </p>
+
+        <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          Pomodoro Timer
+        </h2>
+      </div>
+
+      <button id="3" class="backBtn w-full rounded-xl border border-white/10 bg-white/5 px-6 py-2.5
+             text-sm font-medium text-white backdrop-blur-md
+             transition-all duration-300
+             hover:border-red-400/30 hover:bg-red-500/10 hover:text-red-300
+             active:scale-95 sm:w-auto">
         Back
       </button>
+
     </div>
+
+
+    <!-- Main Timer -->
+    <div class="relative cursor-pointer z-10 flex min-h-[calc(100vh-120px)] items-center justify-center px-4">
+
+      <div class="pomo-timer w-full max-w-md rounded-3xl border border-white/10
+             bg-white/[0.04] p-7 text-center shadow-2xl shadow-black/40
+             backdrop-blur-xl sm:p-10">
+
+        <!-- Timer Label -->
+        <div class="mb-7">
+          <p class="text-sm font-medium uppercase tracking-[0.25em] text-slate-400">
+            Time Remaining
+          </p>
+        </div>
+
+
+        <!-- Timer Circle -->
+        <div class="mx-auto mb-8 flex h-56 w-56 items-center justify-center
+               rounded-full border border-amber-400/20
+               bg-slate-900/70 shadow-[0_0_60px_rgba(245,158,11,0.08)]
+               sm:h-64 sm:w-64">
+
+          <div>
+            <h1 class="timer font-mono text-6xl font-bold tracking-tight text-white
+                   sm:text-7xl">
+              25:00
+            </h1>
+
+            <p class="mt-2 text-xs uppercase tracking-[0.3em] text-slate-500">
+              Focus
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- Controls -->
+        <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
+
+          <button class="start w-full rounded-xl bg-amber-500 px-6 py-3
+                 text-base font-semibold text-slate-950
+                 shadow-lg shadow-amber-500/20
+                 transition-all duration-300
+                 hover:bg-amber-400 hover:shadow-amber-400/30
+                 active:scale-[0.97]
+                 sm:w-auto">
+            Start
+          </button>
+
+          <button class="stop w-full rounded-xl border border-white/10
+                 bg-white/5 px-6 py-3
+                 text-base font-medium text-white
+                 transition-all duration-300
+                 hover:border-white/20 hover:bg-white/10
+                 active:scale-[0.97]
+                 sm:w-auto">
+            Stop
+          </button>
+
+          <button class="reset w-full rounded-xl border border-red-400/20
+                 bg-red-500/10 px-6 py-3
+                 text-base font-medium text-red-300
+                 transition-all duration-300
+                 hover:bg-red-500/20
+                 active:scale-[0.97]
+                 sm:w-auto">
+            Reset
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
   <div class="fullElem min-h-screen w-full bg-slate-900 absolute hidden">
     <div class="flex flex-col items-center sm:flex-row sm:justify-between p-4">
       <h2 class="font-regular text-4xl text-white font-semibold ">List your Daily Plans</h2>

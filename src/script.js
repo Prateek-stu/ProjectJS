@@ -69,11 +69,9 @@ function todo() {
       });
     });
     let clearAll = document.querySelector(".clearAll");
-    clearAll.addEventListener("click",function(){
-      
-      localStorage.removeItem("dayPlanData")
-        
-    })
+    clearAll.addEventListener("click", function () {
+      localStorage.removeItem("dayPlanData");
+    });
   }
 
   // Show saved tasks on page load
@@ -163,3 +161,39 @@ function motivationalQuotes() {
   data();
 }
 motivationalQuotes();
+let timerInterval = null;
+let totalSeconds = 25 * 60;
+let timer = document.querySelector(".timer");
+let startTimer = document.querySelector(".start");
+let pauseTimer = document.querySelector(".stop");
+let resetTimer = document.querySelector(".reset");
+
+function updateTime() {
+  let minutes = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds % 60;
+  timer.innerHTML = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+function start() {
+  timerInterval = setInterval(() => {
+    totalSeconds--;
+    updateTime();
+  }, 10);
+}
+startTimer.addEventListener("click", () => {
+  clearInterval(timerInterval);
+  start();
+});
+function stop() {
+  clearInterval(timerInterval);
+}
+pauseTimer.addEventListener("click", () => {
+  stop();
+});
+function reset() {
+  clearInterval(timerInterval);
+  totalSeconds = 25 * 60;
+  updateTime();
+}
+resetTimer.addEventListener("click", function () {
+  reset();
+});
