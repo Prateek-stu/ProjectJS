@@ -220,3 +220,22 @@ function pomodoroTimer() {
   updateTime();
 }
 pomodoroTimer()
+
+
+let dailyForm=document.querySelector(".daily-form");
+let dailyInp=document.querySelector(".daily-inp");
+let allDailyTask=document.querySelector(".all-daily-tasks");
+
+console.log(allDailyTask);
+
+let tsk = [];
+dailyForm.addEventListener("submit",(e)=>{
+  e.preventDefault();
+
+  tsk.push({task:dailyInp.value});
+  
+  dailyForm.reset();
+
+})
+
+
