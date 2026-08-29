@@ -221,21 +221,115 @@ function pomodoroTimer() {
 }
 pomodoroTimer()
 
+function dailyPlans() {
+  const form = document.querySelector(".daily-form");
+  const input = document.querySelector(".daily-inp");
+  const taskContainer = document.querySelector(".all-daily-tasks");
 
-let dailyForm=document.querySelector(".daily-form");
-let dailyInp=document.querySelector(".daily-inp");
-let allDailyTask=document.querySelector(".all-daily-tasks");
+  // Get tasks from localStorage
+  let dailyTasks = JSON.parse(localStorage.getItem("dailyTasks")) || [];
 
-console.log(allDailyTask);
+  // Save tasks to localStorage
+  function saveDailyTasks() {
+    localStorage.setItem("dailyTasks", JSON.stringify(dailyTasks));
+  }
 
-let tsk = [];
-dailyForm.addEventListener("submit",(e)=>{
-  e.preventDefault();
+  // Render all tasks
+  function renderDailyTasks() {
+    let taskHTML = "";
 
-  tsk.push({task:dailyInp.value});
-  
-  dailyForm.reset();
+    dailyTasks.forEach(function (task, index) {
+      taskHTML += `
+        <div class="bg-slate-800 rounded-lg p-4 flex items-center gap-3">
 
-})
+          <input 
+            type="checkbox" 
+            class="task-check w-5 h-5 accent-blue-500 cursor-pointer shrink-0"
+            data-index="${index}"
+            ${task.completed ? "checked" : ""}
+          >
+
+          <p class="text-white text-base sm:text-lg flex-1 ${
+            task.completed ? "line-through text-slate-400" : ""
+          }">
+            ${task.text}
+          </p>
+
+          <button 
+            class="delete px-3 py-2 bg-red-500 text-white text-sm rounded cursor-pointer hover:bg-red-600"
+            data-index="${index}"
+          >
+            Delete
+          </button>
+
+        </div>
+      `;
+    });
+
+    taskContainer.innerHTML = taskHTML;
+
+    attachDeleteEvents();
+    attachCheckboxEvents();
+  }
+
+  // Add Task
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const taskText = input.value.trim();
+
+    if (taskText === "") {
+      alert("Please enter a task!");
+      return;
+    }
+
+    dailyTasks.push({
+      text: taskText,
+      completed: false,
+    });
+
+    saveDailyTasks();
+    renderDailyTasks();
+
+    input.value = "";
+  });
+
+  // Delete Task
+  function attachDeleteEvents() {
+    const deleteButtons = document.querySelectorAll(".delete");
+
+    deleteButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const index = button.dataset.index;
+
+        dailyTasks.splice(index, 1);
+
+        saveDailyTasks();
+        renderDailyTasks();
+      });
+    });
+  }
+
+  // Checkbox Complete/Incomplete
+  function attachCheckboxEvents() {
+    const checkboxes = document.querySelectorAll(".task-check");
+
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        const index = checkbox.dataset.index;
+
+        dailyTasks[index].completed = checkbox.checked;
+
+        saveDailyTasks();
+        renderDailyTasks();
+      });
+    });
+  }
+
+  // Initial Render
+  renderDailyTasks();
+}
+
+dailyPlans();
 
 
